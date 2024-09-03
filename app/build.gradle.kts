@@ -72,6 +72,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.navigation.compose)
 
+    /*hilt*/
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    ksp(libs.dagger.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+
 }
