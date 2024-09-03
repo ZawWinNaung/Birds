@@ -78,5 +78,9 @@ dependencies {
     ksp(libs.dagger.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
+    /*retrofit*/
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+
 
 }
