@@ -12,13 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.fitnessworkoutexercisesfree.domain.core.ApiResult
 import com.example.fitnessworkoutexercisesfree.domain.model.Exercise
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(level: String, viewModel: HomeViewModel = hiltViewModel()) {
 
     val lazyListState = rememberLazyListState()
 
@@ -43,10 +45,20 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
                     contentPadding = PaddingValues(vertical = 8.dp)
                 ) {
                     val data = (exercises.value as ApiResult.Success<List<Exercise>>).data
-                    items(data) { item ->
+                    val categoryList =
+                        data.mapNotNull {
+                            val isLevel = it.level == level.toLowerCase(Locale.current)
+                            it.name?.takeIf { category ->
+                                category.isNotBlank() && isLevel
+                            }
+                        }
+                            .toSet()
+                            .toMutableList()
+
+                    items(categoryList) { item ->
                         Text(
                             modifier = Modifier.padding(16.dp),
-                            text = item.name ?: ""
+                            text = item
                         )
                     }
                 }

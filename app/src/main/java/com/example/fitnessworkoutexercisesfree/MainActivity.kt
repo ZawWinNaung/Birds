@@ -14,8 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.example.fitnessworkoutexercisesfree.navigation.Home
+import com.example.fitnessworkoutexercisesfree.navigation.Levels
 import com.example.fitnessworkoutexercisesfree.presentation.home.HomeScreen
+import com.example.fitnessworkoutexercisesfree.presentation.levels.LevelsScreen
 import com.example.fitnessworkoutexercisesfree.ui.theme.FitnessWorkoutExercisesFreeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,10 +34,16 @@ class MainActivity : ComponentActivity() {
                     NavHost(
                         modifier = Modifier.padding(innerPadding),
                         navController = navController,
-                        startDestination = Home
+                        startDestination = Levels
                     ) {
-                        composable<Home> {
-                            HomeScreen()
+                        composable<Levels> {
+                            LevelsScreen(onNavigateToHome = { level ->
+                                navController.navigate(Home(level))
+                            })
+                        }
+                        composable<Home> { backStackEntry ->
+                            val home : Home = backStackEntry.toRoute()
+                            HomeScreen(home.level)
                         }
                     }
                 }
