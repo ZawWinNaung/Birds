@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.fitnessworkoutexercisesfree.navigation.Home
 import com.example.fitnessworkoutexercisesfree.navigation.Levels
+import com.example.fitnessworkoutexercisesfree.navigation.NavigationHost
 import com.example.fitnessworkoutexercisesfree.presentation.home.HomeScreen
 import com.example.fitnessworkoutexercisesfree.presentation.levels.LevelsScreen
 import com.example.fitnessworkoutexercisesfree.ui.theme.FitnessWorkoutExercisesFreeTheme
@@ -29,24 +30,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FitnessWorkoutExercisesFreeTheme {
-                val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavHost(
-                        modifier = Modifier.padding(innerPadding),
-                        navController = navController,
-                        startDestination = Levels
-                    ) {
-                        composable<Levels> {
-                            LevelsScreen(onNavigateToHome = { level ->
-                                navController.navigate(Home(level))
-                            })
-                        }
-                        composable<Home> { backStackEntry ->
-                            val home : Home = backStackEntry.toRoute()
-                            HomeScreen(home.level)
-                        }
-                    }
-                }
+                NavigationHost()
             }
         }
     }

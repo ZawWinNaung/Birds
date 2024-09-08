@@ -11,16 +11,19 @@ activityCompose = "1.9.1"
 composeBom = "2024.04.01"
 kotlinxSerialization = "1.9.0"
 kotlinxSerializationJson = "1.5.1"
+materialIconsExtended = "1.7.0"
 navigationCompose = "2.8.0-rc01"
 devtools-ksp = "1.9.0-1.0.13"
 hiltAndroid = "2.49"
 hiltCompiler = "2.49"
 daggerCompiler = "2.49"
 hiltNavigationCompose = "1.2.0"
+neumorphic = "0.0.6"
 retrofit = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -41,6 +44,7 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltA
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+neumorphic = { module = "io.github.sridhar-sp:neumorphic", version.ref = "neumorphic" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
