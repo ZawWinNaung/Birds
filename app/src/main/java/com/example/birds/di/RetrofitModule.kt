@@ -1,5 +1,6 @@
 package com.example.birds.di
 
+import com.example.birds.BuildConfig
 import com.example.birds.data.ApiService
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,13 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
+        return OkHttpClient.Builder().addInterceptor { chain ->
+            val request = chain.request()
+                .newBuilder()
+                .header("x-ebirdapitoken", BuildConfig.API_KEY)
+                .build()
+            chain.proceed(request)
+        }
             .build()
     }
 
@@ -25,7 +32,7 @@ class RetrofitModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/")
+            .baseUrl("https://api.ebird.org/v2/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
