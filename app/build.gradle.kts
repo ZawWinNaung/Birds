@@ -82,5 +82,8 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
 
+    implementation (libs.neumorphic)
+    implementation (libs.androidx.material.icons.extended)
+
 
 }
