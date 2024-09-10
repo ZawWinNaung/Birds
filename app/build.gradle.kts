@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.fitnessworkoutexercisesfree"
+    namespace = "com.example.birds"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.fitnessworkoutexercisesfree"
+        applicationId = "com.example.birds"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

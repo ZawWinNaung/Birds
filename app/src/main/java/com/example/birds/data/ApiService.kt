@@ -1,0 +1,10 @@
+package com.example.birds.data
+
+import com.example.birds.domain.model.Exercise
+import retrofit2.Response
+import retrofit2.http.GET
+
+interface ApiService {
+    @GET("dist/exercises.json")
+    suspend fun getExercises(): Response<List<Exercise>>
+}
