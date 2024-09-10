@@ -50,7 +50,7 @@ fun HomeScreen(level: String, viewModel: HomeViewModel = hiltViewModel()) {
     var selectedCategory by remember { mutableStateOf("") }
 
     LaunchedEffect(key1 = true) {
-        viewModel.getCategories(level)
+        viewModel.getRecentObservations("TH")
     }
 
     LaunchedEffect(categories.value) {
@@ -59,9 +59,9 @@ fun HomeScreen(level: String, viewModel: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    LaunchedEffect(selectedCategory) {
-        viewModel.getExercisesByCategory(selectedCategory)
-    }
+//    LaunchedEffect(selectedCategory) {
+//        viewModel.getExercisesByCategory(selectedCategory)
+//    }
 
     Scaffold(containerColor = Dark.Background) { padding ->
         Column(

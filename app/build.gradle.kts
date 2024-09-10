@@ -21,6 +21,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField(
+            "String", "API_KEY", "\"${project.findProperty("API_KEY")}\""
+        )
+
+        buildFeatures {
+            buildConfig = true
+        }
     }
 
     buildTypes {
@@ -79,11 +87,11 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     /*retrofit*/
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
-    implementation (libs.neumorphic)
-    implementation (libs.androidx.material.icons.extended)
+    implementation(libs.neumorphic)
+    implementation(libs.androidx.material.icons.extended)
 
 
 }
